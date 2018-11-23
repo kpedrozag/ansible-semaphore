@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instalacion de Ansible + Semaphore &mdash; documentación de Ansible + Semaphore - </title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> Ansible + Semaphore
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Instalacion de Ansible + Semaphore</a><ul>
+<li><a class="reference internal" href="#instalacion-y-configuracion-de-ansible">Instalación y configuracion de Ansible</a></li>
+<li><a class="reference internal" href="#instalacion-de-semaphore">Instalacion de Semaphore</a><ul>
+<li><a class="reference internal" href="#preparacion">Preparacion</a></li>
+<li><a class="reference internal" href="#instalacion-de-mysql">Instalacion de MySQL</a><ul>
+<li><a class="reference internal" href="#verificacion-de-la-instalacion">Verificación de la instalación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#preparacion-de-mysql-para-semaphore">Preparación de MySQL para Semaphore</a><ul>
+<li><a class="reference internal" href="#base-de-datos-para-semaphore">Base de datos para Semaphore</a></li>
+<li><a class="reference internal" href="#usuario-para-semaphore">Usuario para Semaphore</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">Instalacion de Semaphore</a></li>
+<li><a class="reference internal" href="#configuracion-de-semaphore">Configuración de Semaphore</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Ansible + Semaphore</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Instalacion de Ansible + Semaphore</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instalacion-de-ansible-semaphore">
+<h1>Instalacion de Ansible + Semaphore<a class="headerlink" href="#instalacion-de-ansible-semaphore" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="instalacion-y-configuracion-de-ansible">
+<h2>Instalación y configuracion de Ansible<a class="headerlink" href="#instalacion-y-configuracion-de-ansible" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para instalar Ansible, tal como lo muestra su documentación se deben seguir los siguientes comandos:</p>
+<p>Se instalan las dependencias:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get -y install software-properties-common
+$ sudo apt-get -y install python-software-properties
+</pre></div>
+</div>
+<p>Se añade el repositorio del paquete:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-add-repository -y ppa:ansible/ansible
+</pre></div>
+</div>
+<p>Se actualizan las listas de descargas de paquetes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get -y update
+</pre></div>
+</div>
+<p>Se instala Ansible:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get -y install ansible
+</pre></div>
+</div>
+<p>Luego, se instala otra dependendencia posterior a Ansible:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get -y install python-passlib
+</pre></div>
+</div>
+<p>Una vez instalado ansible, para evitar que Ansible genere advertencias por los certificados de los host sobre los que trabajará, se desactiva el siguiente parametro del archivo de configuracion de Ansible que está en <code class="docutils literal notranslate"><span class="pre">/etc/ansible/ansible.cfg</span></code> usando <code class="docutils literal notranslate"><span class="pre">nano</span></code> o cualquier otro editor. Solo es necesario descomentar la linea:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">host_key_checking</span><span class="p">:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalacion-de-semaphore">
+<h2>Instalacion de Semaphore<a class="headerlink" href="#instalacion-de-semaphore" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para la instalacipon de Semaphore, es necesario tener en ejecución MySQL (se instalará la version 5.7).</p>
+<div class="section" id="preparacion">
+<h3>Preparacion<a class="headerlink" href="#preparacion" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si existe una instalación de MySQL y no se recuerda algun parametro (como la contraseña de usuario) se recomienda reinstalar el servicio haciendo lo siguiente.</p>
+<p>Removemos todos los paquetes que coincidan con los siguientes parametros</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+</pre></div>
+</div>
+<p>Se elimina el directorio de MySQL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo rm -rf /etc/mysql /var/lib/mysql
+</pre></div>
+</div>
+<p>Se elimina cualquier dependencia innecesaria:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get autoremove
+</pre></div>
+</div>
+<p>Se elimina del cache paquetes .deb con versiones anteriores a los de los programas que tienes instalados como MySQL.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get autoclean
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalacion-de-mysql">
+<h3>Instalacion de MySQL<a class="headerlink" href="#instalacion-de-mysql" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Se actualizan los paquetes y se instala MySQL server.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get -y update
+$ sudo apt-get -y install mysql-server
+</pre></div>
+</div>
+<p>Una vez instalado, se configura la contraseña del usuario root a traves del siguiente comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo mysql_secure_installation
+</pre></div>
+</div>
+<p>Preguntará si deseamos usar una contraseña, a lo que responderemos sí:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Press</span> <span class="n">y</span><span class="o">|</span><span class="n">Y</span> <span class="k">for</span> <span class="n">Yes</span><span class="p">,</span> <span class="nb">any</span> <span class="n">other</span> <span class="n">key</span> <span class="k">for</span> <span class="n">No</span><span class="p">:</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>Luego elegimos una política de validacion de contraseñas. Se recomienda la política STRONG u opcion = 2.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">enter</span> <span class="mi">0</span> <span class="o">=</span> <span class="n">LOW</span><span class="p">,</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">MEDIUM</span> <span class="ow">and</span> <span class="mi">2</span> <span class="o">=</span> <span class="n">STRONG</span><span class="p">:</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Se ingresa la contraseña que cumpla con los requisitos. En este ejemplo se usó “12345678”.</p>
+<dl class="docutils">
+<dt>Luego, preguntará una serie de opciones. Se recomienda responder <code class="docutils literal notranslate"><span class="pre">y</span></code> a todo.</dt>
+<dd><ol class="first last arabic simple">
+<li>Remover usuarios anonimos: <code class="docutils literal notranslate"><span class="pre">y</span></code></li>
+<li>No permitir inicio de sesion de usuario root de forma remota: <code class="docutils literal notranslate"><span class="pre">y</span></code></li>
+<li>Remover base de datos de prueba llamada test: <code class="docutils literal notranslate"><span class="pre">y</span></code></li>
+<li>Recargar privilegios sobre las tablas: <code class="docutils literal notranslate"><span class="pre">y</span></code></li>
+</ol>
+</dd>
+</dl>
+<div class="section" id="verificacion-de-la-instalacion">
+<h4>Verificación de la instalación<a class="headerlink" href="#verificacion-de-la-instalacion" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Se verifica si el servicio de MySQL esta activo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> $ service mysql status
+ ● mysql.service - MySQL Community Server
+  Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+  Active: active (running) since Thu 2018-11-22 11:35:30 -05; 2min 36s ago
+Main PID: 31500 (mysqld)
+   Tasks: 28 (limit: 4915)
+  CGroup: /system.slice/mysql.service
+          └─31500 /usr/sbin/mysqld --daemonize --pid-file=/run/mysqld/mysqld.pid
+</pre></div>
+</div>
+<p>Si no está ejecutandose, se inicia:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo service mysql start
+</pre></div>
+</div>
+<p>Ahora probemos las credenciales de acceso a la base de datos. Digitamos el comand e ingresamos la clave que definimos anteriormente.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo mysqladmin -p -u root version
+Enter password:
+mysqladmin  Ver 8.42 Distrib 5.7.24, for Linux on x86_64
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners.
+</pre></div>
+</div>
+<p>Podemos verificar ademas el puerto por el cual el servicio de MySQL se comunica, a traves del siguiente comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo netstat -tlpn
+Conexiones activas de Internet (solo servidores)
+Proto  Recib Enviad Dirección local         Dirección remota       Estado       PID/Program name
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               ESCUCHAR    16686/systemd-resol
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               ESCUCHAR    12912/cupsd
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               ESCUCHAR    31500/mysqld
+tcp6       0      0 ::1:631                 :::*                    ESCUCHAR    12912/cupsd
+</pre></div>
+</div>
+<p>El puerto por defecto de MySQL: <code class="docutils literal notranslate"><span class="pre">127.0.0.1:3306</span></code>.</p>
+</div>
+</div>
+<div class="section" id="preparacion-de-mysql-para-semaphore">
+<h3>Preparación de MySQL para Semaphore<a class="headerlink" href="#preparacion-de-mysql-para-semaphore" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="section" id="base-de-datos-para-semaphore">
+<h4>Base de datos para Semaphore<a class="headerlink" href="#base-de-datos-para-semaphore" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Se recomienda crear una base de datos para Semaphore.</p>
+<p>Para esto, ingresamos a mysql con el usuario root:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo mysql -u root -h localhost -p
+</pre></div>
+</div>
+<p>Ingresamos la clave y accedemos. Una vez allí, listamos las bases existentes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">show</span> <span class="n">databases</span><span class="p">;</span>
+  <span class="o">+------------------------------------+</span>
+  <span class="o">|</span> <span class="n">Database</span>                           <span class="o">|</span>
+  <span class="o">+------------------------------------+</span>
+  <span class="o">|</span> <span class="n">information_schema</span>                 <span class="o">|</span>
+  <span class="o">|</span> <span class="n">mysql</span>                              <span class="o">|</span>
+  <span class="o">|</span> <span class="n">performance_schema</span>                 <span class="o">|</span>
+  <span class="o">|</span> <span class="n">sys</span>                                <span class="o">|</span>
+  <span class="o">+------------------------------------+</span>
+</pre></div>
+</div>
+<p>Creamos la base de datos</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">create</span> <span class="n">database</span> <span class="n">semaphore</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">1</span> <span class="n">row</span> <span class="n">affected</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Verificamos que se creó.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">show</span> <span class="n">databases</span><span class="p">;</span>
+  <span class="o">+------------------------------------+</span>
+  <span class="o">|</span> <span class="n">Database</span>                           <span class="o">|</span>
+  <span class="o">+------------------------------------+</span>
+  <span class="o">|</span> <span class="n">information_schema</span>                 <span class="o">|</span>
+  <span class="o">|</span> <span class="n">mysql</span>                              <span class="o">|</span>
+  <span class="o">|</span> <span class="n">performance_schema</span>                 <span class="o">|</span>
+  <span class="o">|</span> <span class="n">semaphore</span>                          <span class="o">|</span>
+  <span class="o">|</span> <span class="n">sys</span>                                <span class="o">|</span>
+  <span class="o">+------------------------------------+</span>
+</pre></div>
+</div>
+<p>Salimos de MySQL y reiniciamos el servicio para activar los cambios.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mysql&gt; exit
+Bye
+$ sudo service mysql restart
+</pre></div>
+</div>
+</div>
+<div class="section" id="usuario-para-semaphore">
+<h4>Usuario para Semaphore<a class="headerlink" href="#usuario-para-semaphore" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Por cuestiones de protección y seguridad de MySQL, el ingreso desde Semaphore con el usuario root puede que genere problemas y deniegue el acceso del servicio. Por tanto, se recomienda crear un usuario con los privilegios de root, como se indica a continuación.</p>
+<p>Accedemos a MySQL.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo mysql -u root
+</pre></div>
+</div>
+<p>Nos aseguramos que estamos en la base de datos mysql</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">USE</span> <span class="n">mysql</span><span class="p">;</span>
+<span class="n">Database</span> <span class="n">changed</span>
+</pre></div>
+</div>
+<p>Creamos un usuario ‘semaphore’ con la contraseña <code class="docutils literal notranslate"><span class="pre">Supersecure123_</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">CREATE</span> <span class="n">USER</span> <span class="s1">&#39;semaphore&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="n">BY</span> <span class="s1">&#39;Supersecure123_&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Le otorgamos al usuario todos los privilegios</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">ON</span> <span class="o">*.*</span> <span class="n">TO</span> <span class="s1">&#39;semaphore&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Definimos como plugin de autenticación del usuario ‘semaphore’ la contraseña nativa de mysql:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">UPDATE</span> <span class="n">user</span> <span class="n">SET</span> <span class="n">plugin</span><span class="o">=</span><span class="s1">&#39;mysql_native_password&#39;</span> <span class="n">WHERE</span> <span class="n">User</span><span class="o">=</span><span class="s1">&#39;semaphore&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">1</span> <span class="n">row</span> <span class="n">affected</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+<span class="n">Rows</span> <span class="n">matched</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Changed</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Warnings</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="n">FLUSH</span> <span class="n">PRIVILEGES</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>De nuevo salimos de MySQL y reiniciamos el servicio.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mysql&gt; exit
+Bye
+$ sudo service mysql restart
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Instalacion de Semaphore<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La instalación de Semaphore debe realizarse descargando el paquete de instalación desde los repositorios segun la arquitectura y el SO. Para ubuntu, cuya arquitectura es amd64, el enlace de descarga (hasta la fecha 22/11/2018) es: <a class="reference external" href="https://github.com/ansible-semaphore/semaphore/releases/download/v2.5.1/semaphore_2.5.1_linux_amd64.deb">https://github.com/ansible-semaphore/semaphore/releases/download/v2.5.1/semaphore_2.5.1_linux_amd64.deb</a></p>
+<p>Usamos wget para descargar el paquete. Si no está instalado, siga los comandos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y wget
+$ wget https://github.com/ansible-semaphore/semaphore/releases/download/v2.5.1/semaphore_2.5.1_linux_amd64.deb
+</pre></div>
+</div>
+<p>Una vez descargado, se procede a instalarse de la siguiente forma:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install ./semaphore_2.5.1_linux_amd64.deb
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuracion-de-semaphore">
+<h3>Configuración de Semaphore<a class="headerlink" href="#configuracion-de-semaphore" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Antes de ejecutarse, se recomienda crear el siguiente directorio <code class="docutils literal notranslate"><span class="pre">/opt/data/semaphore</span></code>. Para esto, nos dirigimos a la raiz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /
+</pre></div>
+</div>
+<p>Entramos en <code class="docutils literal notranslate"><span class="pre">opt/</span></code> y creamos el directorio <code class="docutils literal notranslate"><span class="pre">data/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd opt
+$ mkdir data
+</pre></div>
+</div>
+<p>Entramos en <code class="docutils literal notranslate"><span class="pre">data/</span></code> y creamos el directorio <code class="docutils literal notranslate"><span class="pre">semaphore/</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd data
+$ mkdir semaphore
+</pre></div>
+</div>
+<p>Entramos al directorio <code class="docutils literal notranslate"><span class="pre">semaphore/</span></code> y vemos la ruta</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd semaphore
+$ pwd
+/opt/data/semaphore
+</pre></div>
+</div>
+<p>La ruta anterior será clave en pasos siguientes de la configuración de Semaphore.</p>
+<p>Ahora, nos dirigimos al directorio de nuestra preferencia para continuar el proceso. Una vez allí, colocamos el comando que iniciará la configuración de Semaphore para su despliegue.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> $ semaphore -setup
+Hello! You will now be guided through a setup to:
+
+1. Set up configuration for a MySQL/MariaDB database
+2. Set up a path for your playbooks (auto-created)
+3. Run database Migrations
+4. Set up initial semaphore user &amp; password
+</pre></div>
+</div>
+<p>A continuacion se describirán los valores en cada parámetro. Donde no se indiquen valores, se da <code class="docutils literal notranslate"><span class="pre">[enter]</span></code> aceptando el valor por defecto.</p>
+<p>En este parametro se indica la IP y puerto de MySQL, que en este caso es en local y el puerto por defecto.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">DB</span> <span class="n">Hostname</span> <span class="p">(</span><span class="n">default</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3306</span><span class="p">):</span> <span class="p">[</span><span class="n">enter</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Luego, el usuario creado en MySQL para Semaphore.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">DB</span> <span class="n">User</span> <span class="p">(</span><span class="n">default</span> <span class="n">root</span><span class="p">):</span> <span class="n">semaphore</span>
+</pre></div>
+</div>
+<p>La contraseña del usuario ‘semaphore’:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">DB</span> <span class="n">Password</span><span class="p">:</span> <span class="n">Supersecure123_</span>
+</pre></div>
+</div>
+<p>El nombre de la base de datos para Semaphore, como se había definido antes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">DB</span> <span class="n">Name</span> <span class="p">(</span><span class="n">default</span> <span class="n">semaphore</span><span class="p">):</span> <span class="p">[</span><span class="n">enter</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Se indica la ruta creada con anteriorirdad.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;</span> <span class="n">Playbook</span> <span class="n">path</span> <span class="p">(</span><span class="n">default</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">semaphore</span><span class="p">):</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">semaphore</span>
+ <span class="o">&gt;</span> <span class="n">Web</span> <span class="n">root</span> <span class="n">URL</span> <span class="p">(</span><span class="n">optional</span><span class="p">,</span> <span class="n">example</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8010</span><span class="o">/</span><span class="p">):</span> <span class="p">[</span><span class="n">enter</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">Enable</span> <span class="n">email</span> <span class="n">alerts</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">n</span><span class="p">):</span> <span class="p">[</span><span class="n">enter</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">Enable</span> <span class="n">telegram</span> <span class="n">alerts</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">n</span><span class="p">):</span> <span class="p">[</span><span class="n">enter</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">Enable</span> <span class="n">LDAP</span> <span class="n">authentication</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">n</span><span class="p">):</span> <span class="p">[</span><span class="n">enter</span><span class="p">]</span>
+
+<span class="n">Generated</span> <span class="n">configuration</span><span class="p">:</span>
+<span class="p">{</span>
+    <span class="s2">&quot;mysql&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:3306&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;semaphore&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pass&quot;</span><span class="p">:</span> <span class="s2">&quot;Supersecure123_&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;semaphore&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tmp_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/opt/data/semaphore&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cookie_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;ETZ4IjSjRaMRJxJHcRkY719iIqxdRXyAF8lCuE+EjmA=&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cookie_encryption&quot;</span><span class="p">:</span> <span class="s2">&quot;+vtXZBVFZUJVjJE8a3nhv8xAuogu8aXYMJ5WQE0MszQ=&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;email_sender&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;email_host&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;email_port&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;web_host&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ldap_binddn&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ldap_bindpassword&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ldap_server&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ldap_searchdn&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ldap_searchfilter&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ldap_mappings&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dn&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mail&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uid&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cn&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;telegram_chat&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;telegram_token&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;concurrency_mode&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;max_parallel_tasks&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;email_alert&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;telegram_alert&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;ldap_enable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;ldap_needtls&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Confirmada la información ingresada, validamos y continuamos el proceso marcando <code class="docutils literal notranslate"><span class="pre">yes</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Is this correct? (yes/no): yes
+</pre></div>
+</div>
+<p>El siguiente directorio es la ruta donde estarán alojados los archivos de salida que Semaphore genere. Se puede indicar la ruta de su preferencia.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Config</span> <span class="n">output</span> <span class="n">directory</span> <span class="p">(</span><span class="n">default</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">labredes</span><span class="o">-</span><span class="mi">15</span><span class="o">/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">semaphore_instalacion</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Una vez hecho lo anterior, se comenzará con la configuración y migración de las bases de datos a MySQL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">Running</span><span class="p">:</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">labredes</span><span class="o">-</span><span class="mi">15</span><span class="o">/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">semaphore_instalacion</span><span class="o">..</span>
+ <span class="n">Configuration</span> <span class="n">written</span> <span class="n">to</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">labredes</span><span class="o">-</span><span class="mi">15</span><span class="o">/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">semaphore_instalacion</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">json</span><span class="o">..</span>
+ <span class="n">Pinging</span> <span class="n">db</span><span class="o">..</span>
+
+ <span class="n">Running</span> <span class="n">DB</span> <span class="n">Migrations</span><span class="o">..</span>
+ <span class="n">Checking</span> <span class="n">DB</span> <span class="n">migrations</span>
+ <span class="n">Creating</span> <span class="n">migrations</span> <span class="n">table</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v0</span><span class="o">.</span><span class="mf">0.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">31.210497156</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">47.147041162</span><span class="p">)</span><span class="o">...</span>
+<span class="p">[</span><span class="mi">11</span><span class="o">/</span><span class="mi">11</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">0.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">31.939999179</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">47.876543161</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">7</span><span class="o">/</span><span class="mi">7</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">1.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">32.670561977</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">48.607105974</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">2.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">32.829611754</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">48.766155755</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">3.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">32.897156599</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">48.833700597</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">4.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">33.228799723</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">49.165343704</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">5.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">33.415970512</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">49.352514494</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v0</span><span class="o">.</span><span class="mf">1.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">33.491666899</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">49.428210889</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">6</span><span class="o">/</span><span class="mi">6</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">6.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">33.694602638</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">49.631146620</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">4</span><span class="o">/</span><span class="mi">4</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">7.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">34.137515442</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">50.074059424</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">8.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">34.247516946</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">50.184060928</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v1</span><span class="o">.</span><span class="mf">9.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">34.357351367</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">50.293895362</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v2</span><span class="o">.</span><span class="mf">2.1</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">34.496512651</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">50.433056633</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v2</span><span class="o">.</span><span class="mf">3.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">34.694145835</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">50.630689822</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v2</span><span class="o">.</span><span class="mf">3.1</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">35.00776799</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">50.944311971</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v2</span><span class="o">.</span><span class="mf">3.2</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">35.029190089</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">50.965734087</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v2</span><span class="o">.</span><span class="mf">4.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">35.054947161</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">50.991491143</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">Executing</span> <span class="n">migration</span> <span class="n">v2</span><span class="o">.</span><span class="mf">5.0</span> <span class="p">(</span><span class="n">at</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span> <span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">35.156617357</span> <span class="o">-</span><span class="mi">0500</span> <span class="o">-</span><span class="mi">05</span> <span class="n">m</span><span class="o">=+</span><span class="mf">51.093161339</span><span class="p">)</span><span class="o">...</span>
+ <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">Migrations</span> <span class="n">Finished</span>
+</pre></div>
+</div>
+<p>Cuando finalice, se indicará ahora el usuario, email y clave de acceso a la interfaz de Semaphore.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Username: myuser
+&gt; Email: kpedrozag@gmail.com
+&gt; Your name: kevin
+&gt; Password: pass
+
+You are all setup kevin!
+Re-launch this program pointing to the configuration file
+
+ ./semaphore -config /home/labredes-15/Documentos/semaphore_instalacion/config.json
+
+To run as daemon:
+
+ nohup ./semaphore -config /home/labredes-15/Documentos/semaphore_instalacion/config.json &amp;
+
+You can login with kpedrozag@gmail.com or myuser.
+</pre></div>
+</div>
+<p>Finalizado lo anterior, ya se ha concluido con todo el proceso. Ahora es posible acceder a la interfaz web. Para esto, vamos a la ruta indicada de los archivos de salida, donde estará el archivo <code class="docutils literal notranslate"><span class="pre">config.json</span></code> que permite el despliegue del servicio.</p>
+<p>Lo iniciamos con el comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ semaphore -config config.json
+</pre></div>
+</div>
+<p>Lo cual generará lo siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">Using</span> <span class="n">config</span> <span class="n">file</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">json</span>
+ <span class="n">Semaphore</span> <span class="n">v2</span><span class="o">.</span><span class="mf">5.1</span>
+ <span class="n">Port</span> <span class="p">:</span><span class="mi">3000</span>
+ <span class="n">MySQL</span> <span class="n">semaphore</span><span class="nd">@127</span><span class="o">.</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">1</span><span class="p">:</span><span class="mi">3306</span> <span class="n">semaphore</span> <span class="n">Tmp</span> <span class="n">Path</span> <span class="p">(</span><span class="n">projects</span> <span class="n">home</span><span class="p">)</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">semaphore</span>
+ <span class="n">Checking</span> <span class="n">DB</span> <span class="n">migrations</span>
+<span class="mi">403</span>  <span class="mi">12</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">00</span>       <span class="mf">6.043</span><span class="n">µs</span> <span class="o">|</span>   <span class="n">GET</span>     <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">user</span>
+</pre></div>
+</div>
+<p>Ahora, desde el navegador y entrando a <code class="docutils literal notranslate"><span class="pre">http://localhost:3000</span></code> entraremos al Login de la interfaz web. Se ingresan las credenciales, que en este caso es el nombre de usuario <code class="docutils literal notranslate"><span class="pre">myuser</span></code> y la clave <code class="docutils literal notranslate"><span class="pre">pass</span></code>.</p>
+<dl class="docutils">
+<dt>Más información en:</dt>
+<dd><ul class="first last simple">
+<li>TheDumbTechGuy (2018). Install Ansible Semaphore on Ubuntu. Retrieved from <a class="reference external" href="https://gist.github.com/thedumbtechguy/0fae1ae931042829b73426630f3cd168">https://gist.github.com/thedumbtechguy/0fae1ae931042829b73426630f3cd168</a></li>
+<li>Zetacu. (2018). ERROR 1698 (28000): Access denied for user <a class="reference external" href="mailto:'root'&#37;&#52;&#48;'localhost">“root”<span>&#64;</span>”localhost</a>”. Retrieved from <a class="reference external" href="https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost">https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Kevin Pedroza Goenaga
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
